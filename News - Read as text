@@ -1,0 +1,59 @@
+Connection to the web services can be easily implemented using an external library: RoboSpice.
+
+
+Information:
+
+Robospice
+RoboSpice is a modular Android library that simplifies the process of handling asynchronous requests [11].
+RESTful Web services are supported out-of-the box.
+Request cancellation, request prioritization and request aggregation are supported.
+The library leverages caching and has an external cache option available (it is required to implement an abstract class CacheManager).
+
+There are several options for cache format: 
+			1. JSON (Jackson/Jackson2/Gson supported)
+			2. XML
+			3. plain text
+			4. binary data.
+
+When a request is being executed, a cache option can be set on/off, cache time (the time when the results are valid).
+Among important library extensions there is an ORMLite module used to write and read POJO to and from SQLite.
+Data identification is based on class implementations.
+
+The Robospice library is strongly typed; therefore POJOs are used as request parameters and POJOs are received back as request results.
+The library is well tested (the repository includes more than 200 tests) and has extensive documentation; thereby stability and efficiency are guaranteed. [11]
+
+Extra information gathered from library classes published in the repository includes the following:
+	* There is no built-in support for pre- and post- operations of the REST methods, but it is possible to create implementation using a class derived from SpiceRequest.
+
+	* A network connection is customized and configured via a class derived from SpiceRequest (loadDataFromNetwork method). 
+	  The library includes implementation of SpiceRequest by default based on java.net.URL for plain text data and HttpURLConnection [10] for binary data.
+
+	* A retry algorithm is configured via RetryPolicy. DefaultRetryPolicy used by default implements an exponential back-off algorithm.
+
+	* The data is passed from Activity to Service using RequestListener. The result type is customized using a generic parameter. 
+	   A listener is passed as a parameter into spiceManager.execute(), the results are received in a parsed representation.
+
+
+
+Features of RoboSpice compared to some other similar libraries for REST Client management are given in the pdf file titled: 'Rest Client For Android'.
+Page number for the features is 20.
+The above write-up is coined from the same book (pg 16-17).
+
+
+
+
+
+
+
+													Thanks for patiently reading
+															Staa99
+
+
+
+
+
+
+
+
+
+
